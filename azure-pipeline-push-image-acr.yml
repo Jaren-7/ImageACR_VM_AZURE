@@ -7,7 +7,7 @@ variables:
   # variables de entorno
   ACR_NAME: 'devopsmyapps' # colocar el nombre de tu ACR
   IMAGE_NAME: 'myapp-nginx-s4' # colocar el nombre de imagen
-  SERVICE_CONNECTION_NAME: 'myapps-devops-s4' # colocar nombre del service connection ubicado en docker registry-- azure container registry
+  SERVICE_CONNECTION_NAME: 'taller-devops-s4' # colocar nombre del service connection ubicado en docker registry-- azure container registry
 
 jobs:
   - job: BuildAndPush
