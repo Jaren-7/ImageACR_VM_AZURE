@@ -15,11 +15,11 @@ jobs:
       vmImage: 'ubuntu-latest'
     steps:
       - task: Docker@2
-        inputs
+        inputs:
           command: 'buildAndPush'
           containerRegistry: '$(SERVICE_CONNECTION_NAME)'
           repository: '$(ACR_NAME).azurecr.io/$(IMAGE_NAME)'
           dockerfile: '**/Dockerfile'
           tags: |
-	        latest
+            latest
         displayName: 'Build and Push Docker Image'
