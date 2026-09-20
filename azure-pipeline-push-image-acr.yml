@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  # variables de entorno
+  ACR_NAME: 'devopsmyapps' # colocar el nombre de tu ACR
+  IMAGE_NAME: 'myapp-nginx-s4' # colocar el nombre de imagen
+  SERVICE_CONNECTION_NAME: 'myapps-devops-s4' # colocar nombre del service connection ubicado en docker registry-- azure container registry
+
+jobs:
+  - job: BuildAndPush
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Docker@2
+        inputs
+          command: 'buildAndPush'
+          containerRegistry: '$(SERVICE_CONNECTION_NAME)'
+          repository: '$(ACR_NAME).azurecr.io/$(IMAGE_NAME)'
+          dockerfile: '**/Dockerfile'
+          tags:  |
+	    latest
+        displayName: 'Build and Push Docker Image'
